@@ -70,6 +70,3 @@ start = "ccls"
 run = ["sh", "-c", "./main"]
 build = ["sh", "-c", "make -s"]
 
-run = "g++ -o main main.cpp && ./main"
-
-run = "make run"
