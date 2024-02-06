@@ -2,6 +2,7 @@
 using namespace std;
 
 int main(){
+  //Instantiate Variables
   double next;
   double highest;
 
@@ -14,10 +15,11 @@ int main(){
     return -1;
   }
 
-  while (cin>> next) {
+  while (cin >> next) {
     if (next > highest) {
       highest = next;
-    }
   }
-  cout << "Highest temp: " << highest << endl;"
+  }
+  cout << "Highest temp: " << highest << endl;
+  return 0;
 }
