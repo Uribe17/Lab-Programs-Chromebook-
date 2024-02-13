@@ -1,6 +1,6 @@
 //Lab2_calc.cpp
 /***
-  * This program will display an int divided by int, and i
+  * This program will display an int divided by int, and int/double
 ***/
 
 #include <iostream>
