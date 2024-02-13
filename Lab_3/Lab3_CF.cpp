@@ -7,7 +7,7 @@ int main(){
 
   while (x < y){
     printf("%i\n", x);
-    x++;
+    x = x + 3;
   } 
   if (x % 2 == 0){
     printf("x is even\n");
