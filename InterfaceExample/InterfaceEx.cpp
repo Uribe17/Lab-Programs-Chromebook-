@@ -1,7 +1,9 @@
 #include <iospace>
-#include "Point.h"
-using namespace std;
-
+/**
+*#include "Point.h"
+*using namespace std;
+* These will not be needed.
+**/
 Point::Point(double xval, double yval){
   x = xval;
   y = yval;
