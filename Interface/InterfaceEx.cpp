@@ -1,4 +1,4 @@
-#include <iospace>
+#include <iostream>
 /**
 *#include "Point.h"
 *using namespace std;
@@ -17,3 +17,10 @@ Point::Point(double xval, double yval){
    y = y + dy; // x += dy;
 //Since it's void, it does not return.
  }
+
+double Point::getx() const{
+  return x;
+}
+double Point::gety() const{
+  return y;
+}

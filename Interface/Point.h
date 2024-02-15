@@ -5,7 +5,12 @@ class Point
 {
   public:
       Point (double xval, double yval);
-      void move(double dx, doubly dy);
+    //Mutator
+      void move(double dx, double dy);
+    //Accessor
+      double get_x() const;
+      double get_y() const;
+
 //D in dx and dy are the distance to move in the x and y directions, respectively, it is called "Delta", move does not return any values.
   private:
       double x;
