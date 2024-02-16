@@ -1,4 +1,5 @@
 #include <iostream>
+#include "Point.h"
 /**
 *#include "Point.h"
 *using namespace std;
@@ -13,8 +14,8 @@ Point::Point(double xval, double yval){
 
 //To implement the function, do "Class_Name::Function_Name()"
  void Point::move(double dx, double dy){
-   x = x + dx; // x += dx;
-   y = y + dy; // x += dy;
+   x += dx;
+   x += dy;
 //Since it's void, it does not return.
  }
 

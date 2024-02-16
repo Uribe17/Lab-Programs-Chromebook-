@@ -6,10 +6,10 @@ int main(){
   double x = 0;
   double y = 0;
   Point p = Point(x, y);
-  printf("Before Move x: %d, y: %d\n", p.getX(), p.getY());
+  printf("Before Move x: %f, y: %f\n", p.getx(), p.gety());
   p.move(1, 1);
 
-  printf("After Move x: %d, y: %d\n", p.getX(), p.getY());
+  printf("After Move x: %f, y: %f\n", p.getx(), q.gety());
 
   return 0;
 }
