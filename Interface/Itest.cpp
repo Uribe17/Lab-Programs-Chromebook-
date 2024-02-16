@@ -15,7 +15,7 @@ Point::Point(double xval, double yval){
 //To implement the function, do "Class_Name::Function_Name()"
  void Point::move(double dx, double dy){
    x += dx;
-   x += dy;
+   y += dy;
 //Since it's void, it does not return.
  }
 
