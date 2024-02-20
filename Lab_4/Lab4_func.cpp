@@ -9,7 +9,6 @@ using namespace std;
  * @param z : (int)
  * @return (int)
  */
-// Write Code
 int sumOfThree(int x, int y, int z){
   int sum = x + y + z;
   return sum;
@@ -36,14 +35,8 @@ double division(double x, double y){
  * @return true: x > y
  * @return false: x <= y
 **/
-// Write Code
 bool isGreaterThan(double x, int y){
-  if (x>y){
-    return true;
-  } else {
-    return false;
-  }
-  
+  return x>y;
 }
 
 /** select
@@ -56,7 +49,6 @@ bool isGreaterThan(double x, int y){
  * @param func_type : (string)
  * @return string
 **/
-// Write Code
 string select(string func_type){
   string out = "";
   if (func_type == "sum"){
