@@ -61,7 +61,7 @@ string select(string func_type){
     out = "Invalid function type\n";
   }
 return out;
-};
+}
 
 /** myPrint
  * @brief Calls select() to print out the output with the correct prompt
