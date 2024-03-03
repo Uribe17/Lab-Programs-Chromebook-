@@ -1,5 +1,6 @@
 #ifndef PRG_H
 #define RPG_H
+#include <string>
 using namespace std;
 
 const int SKILL_SIZE = 2;
@@ -11,7 +12,7 @@ class RPG{
         RPG(string name, int health, int strength, int defense, string type);
 
         void setSkills();
-        void printAction(string RPG);
+        void printAction(string, RPG);
         void updateHealth(int);
         //These use pointers
         void attack(RPG *);
@@ -27,7 +28,7 @@ class RPG{
         int health;
         int strength;
         int defense;
-        string type;
+        string type; //Warrior, Mage, Thief, Archer
         string skills[SKILL_SIZE];
 };
 #endif
