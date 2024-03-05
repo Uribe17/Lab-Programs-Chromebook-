@@ -32,6 +32,7 @@ void RPG::printAction(string skill, RPG opponent){
 void RPG::updateHealth(int health){
     this->health = health;
 }
+
 RPG::RPG(){
     name = "NPC";
     health = 100;
@@ -42,6 +43,11 @@ RPG::RPG(){
     skills[1] = "parry";
 }
 RPG::RPG(string name, int health, int strength, int defense, string type){
+    this->name = name;
+    this->health = health;
+    this->strength = strength;
+    this->defense = defense;
+    this->type = type;
     setSkills();
 }
 
