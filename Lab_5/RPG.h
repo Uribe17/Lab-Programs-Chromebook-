@@ -18,9 +18,9 @@ class RPG{
 
         //These use pointers, and are not used in RPG.cpp
         void attack(RPG *opponent);
-        void attack(RPG opponent);
+        //void attack(RPG opponent);
         void useSkill(RPG *opponent);
-        void useSkill(RPG opponent);
+        //void useSkill(RPG opponent);
 
         bool isAlive() const;
         // Accessors
