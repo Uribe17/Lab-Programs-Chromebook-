@@ -41,6 +41,18 @@ void RPG::updateHealth(int new_health){
 bool RPG::isAlive() const{
     return health > 0;
 }
+/**
+ * @brief uses strength to attack another RPG
+ *
+ * @param RPG opponent
+**/
+void RPG::attack(RPG opponent){
+  //int damage = strength - opponent.getDefense();
+  void updateHealth(int new_health - damage);
+}
+void RPG::attack(RPG *opponent){
+  int damage = strength - opponent->getDefense();
+}
 
 RPG::RPG(){
     name = "NPC";
