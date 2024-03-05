@@ -13,16 +13,20 @@ class RPG{
 
         void setSkills();
         void printAction(string, RPG);
+        // Mutator
         void updateHealth(int);
-        //These use pointers
+
+        //These use pointers, and are not used in RPG.cpp
         void attack(RPG *);
         void useSkill(RPG *);
 
         bool isAlive() const;
+        // Accessors
         string getName() const;
         int getHealth() const;
         int getStrength() const;
         int getDefense() const;
+
     private:
         string name;
         int health;

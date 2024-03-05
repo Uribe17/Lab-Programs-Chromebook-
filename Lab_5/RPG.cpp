@@ -29,8 +29,17 @@ void RPG::printAction(string skill, RPG opponent){
  *
  *@param new_health
 */
-void RPG::updateHealth(int health){
-    this->health = health;
+void RPG::updateHealth(int new_health){
+    health = new_health;
+}
+/**
+ * @brief returns whether health is greater than 0
+ *
+ * @return true
+ * @return false
+**/
+bool RPG::isAlive() const{
+    return health > 0;
 }
 
 RPG::RPG(){
@@ -63,3 +72,4 @@ int RPG::getStrength() const{
 int RPG::getDefense() const{
   return defense;
 }
+
