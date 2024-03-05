@@ -22,7 +22,7 @@ void RPG::setSkills(){
     }
 }
 void RPG::printAction(string skill, RPG opponent){
-    printf("%s used %s pm %s\n", name.c_str(), skill.c_str(), opponent.getName().c_str());
+    printf("%s used %s on %s\n", name.c_str(), skill.c_str(), opponent.getName().c_str());
 }
 /*
  *@brief Updates health into new_health 
