@@ -25,7 +25,7 @@ using namespace std;
 //  player1.attack(&player2);
 //  cout << "------------------------" << endl;
 //}
-//void player2Turn(RPG player1, RPG player2){
+//void player2Turn(RPG player2, RPG player1){
 //  cout << player1.getName() << "'s health: " << player1.getHealth() //<< "  " << player2.getName() << "'s health: " << player2.getHealth() //<< endl;
 //  cout<< player2.getName() << "'s turn" << endl;
 //  cout << "Skill 0: " << "pilfer" << endl;
@@ -79,7 +79,7 @@ int main(){
   cout << player2.isAlive() << endl;
 //  while(player1.isAlive() && player2.isAlive()){
 //    player1Turn(player1, player2);
-//    player2Turn(player1, player2);
+//    player2Turn(player2, player1);
 //  }
 //  if (player1.isAlive() == false){
 //    cout << player2.getName() << " defeated " << player1.getName() //<< endl;
