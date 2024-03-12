@@ -16,7 +16,6 @@ void player1Turn(RPG player1, RPG player2){
   cout << "Choose a skill to use, enter 0 or 1: " << endl;
   string choice = "";
   cin >> choice;
-  player1.attack(&player2);
   if (choice == "0"){
     player1.printAction("slash", player2);
   } else {
@@ -33,7 +32,6 @@ void player2Turn(RPG player2, RPG player1){
   cout << "Choose a skill to use, enter 0 or 1: " << endl;
   string choice = "";
   cin >> choice;
-  player2.attack(&player1);
   if (choice == "0"){
     player2.printAction("slash", player1);
   } else {
@@ -42,23 +40,7 @@ void player2Turn(RPG player2, RPG player1){
   player2.attack(&player1);
   cout << "------------------------" << endl;
 }
-/**
- * @brief uses strength to attack another RPG
- *
- * @param RPG opponent
-**/
-void RPG::attack(RPG *opponent){
-  int damage = strength - opponent->getDefense();
-  int new_health = opponent->getHealth() - damage;
-  opponent->updateHealth(new_health);
-}
-/**
- * @brief uses the skills of player1/player2
- *
- * @param RPG
-**/
-void RPG::useSkill(RPG *opponent){
-}
+
 
 
 int main(){

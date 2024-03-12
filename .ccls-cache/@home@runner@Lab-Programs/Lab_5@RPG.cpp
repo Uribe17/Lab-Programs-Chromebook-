@@ -41,6 +41,26 @@ void RPG::updateHealth(int new_health){
 bool RPG::isAlive() const{
     return health > 0;
 }
+/**
+  * @brief uses strength to attack another RPG, defense softens the damage the opponent takes.
+  *
+  * @param RPG opponent
+**/
+void RPG::attack(RPG * opponent){
+  int damage = strength - (*opponent).getDefense();
+  int new_health = (*opponent).getHealth() - damage;
+  (*opponent).updateHealth(new_health);
+}
+
+/**
+ * @brief uses the skills of player1/player2
+ *
+ * @param RPG
+**/
+void RPG::useSkill(RPG *opponent){
+  
+}
+
 RPG::RPG(){
     name = "NPC";
     health = 100;
