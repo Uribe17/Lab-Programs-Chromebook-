@@ -54,11 +54,4 @@ int main(){
 
   gameLoop(&player1, &player2);
   displayEnd(player1, player2);
-
- 
-  if (player1.isAlive() == true){
-    cout << player1.getName() << " defeated " << player2.getName() << " , Good Game!" << endl;
-  } else {
-    cout << player2.getName() << " defeated " << player1.getName() << " , Good Game!" << endl;
-  }
 }
