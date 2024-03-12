@@ -47,8 +47,9 @@ bool RPG::isAlive() const{
   * @param RPG opponent
 **/
 void RPG::attack(RPG * opponent){
-  int damage = strength - (*opponent).getDefense();
-  int new_health = (*opponent).getHealth() - damage;
+  int opp_health = (*opponent).getHealth();
+  int opp_def = (*opponent).getDefense();
+  int new_health = opp_health - (strength - opp_def);
   (*opponent).updateHealth(new_health);
 }
 
@@ -57,8 +58,16 @@ void RPG::attack(RPG * opponent){
  *
  * @param RPG
 **/
-void RPG::useSkill(RPG *opponent){
-  
+void RPG::useSkill(RPG * opponent){
+  for(int i = 0; i < SKILL_SIZE; i++){
+    printf("Skill %i"); 
+  }
+  int chosen_skill_index;
+  printf("Choose...\n");
+  cin >> chosen_skill_index;
+  string chosen_skill = skills[chosen_skill_index];
+  printAction(chosen_skill, *opponent);
+  attack(opponent);
 }
 
 RPG::RPG(){
