@@ -65,21 +65,7 @@ int main(){
   RPG player1 = RPG();
   RPG player2 = RPG("Thief", 100, 10, 5, "thief");
 
-  cout << "Defense: "<< player1.getDefense() << " Strength: " << player1.getStrength() << " Name: " << player1.getName() << endl;
-  cout << "Base Health: " <<player1.getHealth() << endl;
-  int new_health = player1.getHealth() - 10;
-  player1.updateHealth(new_health);
-  cout << "New Health: "<<player1.getHealth() << endl;
-
-  cout << "Defense: "<< player2.getDefense() << " Strength: " << player2.getStrength() << " Name: " << player2.getName() << endl;
-  cout << "Base Health: " << player2.getHealth() << endl;
-  int new_health2 = player2.getHealth() - 10;
-  player2.updateHealth(new_health2);
-  cout << "New Health: " << player2.getHealth() << endl;
-
-  cout << "1 means the players are alive, 0 means they are dead" << endl;
-  cout << "Player 1: "<< player1.isAlive() << endl;
-  cout << "Player 2: " << player2.isAlive() << endl;
+ printf("%s Current Stats\n", player1.getName().c_str());
 
   while(player1.isAlive() && player2.isAlive()){
     player1Turn(player1, player2);
