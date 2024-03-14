@@ -50,7 +50,7 @@ void gameLoop(RPG * p1, RPG * p2){
 
 int main(){
   RPG player1 = RPG();
-  RPG player2 = RPG("Thief", 100, 10, 5, "thief");
+  RPG player2 = RPG("Thief", 100, 15, 5, "thief");
 
   gameLoop(&player1, &player2);
   displayEnd(player1, player2);
