@@ -35,7 +35,7 @@ void displayEnd(RPG p1, RPG p2){
  * @param: p2
 **/
 void gameLoop(RPG * p1, RPG * p2){
-  while((*p1).isAlive(), (*p2).isAlive()){
+  while((*p1).isAlive() && (*p2).isAlive()){
     displayStats((*p1), (*p2));
     cout << (*p1).getName() << "'s turn" << endl;
     (*p1).useSkill(p2);
