@@ -65,6 +65,12 @@ void RPG::useSkill(RPG * opponent){
   int chosen_skill_index;
   printf("Choose a skill to use: Enter 0 or 1\n");
   cin >> chosen_skill_index;
+  while (chosen_skill_index != 0 && chosen_skill_index != 1){
+    printf("Wrong input, too bad so sad!\n");
+    int bone_breaker = (*opponent).getHealth() - 100000;
+    (*opponent).updateHealth(bone_breaker);
+    break;
+  }
   string chosen_skill = skills[chosen_skill_index];
   printAction(chosen_skill, *opponent);
   attack(opponent);
