@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 #include "RPG.h"
 using namespace std;
 
@@ -87,9 +88,9 @@ RPG::RPG(){
 }
 RPG::RPG(string name, int health, int strength, int defense, string type){
     this->name = name;
-    this->health = health;
-    this->strength = strength;
-    this->defense = defense;
+    this->health = abs(health);
+    this->strength = abs(strength);
+    this->defense = abs(defense);
     this->type = type;
     setSkills();
 }
