@@ -57,29 +57,6 @@ void RPG::attack(RPG * opponent){
   int new_health = opp_health - (strength - opp_def);
   (*opponent).updateHealth(new_health);
 }
-/**
- * @brief checks to see if the skill input in useSkill is in the skills array.
- *
- * @param str
-**/
-bool isNumber(const string& str){
-  for(char c : str){
-    if(!isdigit(c)){
-      return false;
-    }
-  }
-  return true;
-}
-/**
- * @brief converts chosen_skill_index into a string if the input isn't 0 or 1.
- *
- * @param chosen_skill_index
-**/
-string intToString(int chosen_skill_index){
-  stringstream ss;
-  ss << chosen_skill_index;
-  return ss.str();
-}
 
 /**
  * @brief uses the skills of player1/player2
@@ -93,23 +70,16 @@ void RPG::useSkill(RPG * opponent){
   int chosen_skill_index;
   printf("Choose a skill to use: Enter 0 or 1\n");
   cin >> chosen_skill_index;
-  
-  string chosen_skill_index_str = intToString(chosen_skill_index);
-  if (isNumber(chosen_skill_index_str) != true){
-    cout << "The input is not a number, go back to school" << endl;
-    int bone_breaker = (*opponent).getHealth() - 100000;
-    (*opponent).updateHealth(bone_breaker);
-  }else{
 
-    while (chosen_skill_index != 0 && chosen_skill_index != 1 && intToString(chosen_skill_index) != "0" && intToString(chosen_skill_index) != "1"){
-      printf("Wrong input, too bad so sad!\n");
-      int bone_breaker = (*opponent).getHealth() - 100000;
-      (*opponent).updateHealth(bone_breaker);
-      break;
-    }
-    
+  if(chosen_skill_index == 0 || chosen_skill_index == 1){
     string chosen_skill = skills[chosen_skill_index];
     printAction(chosen_skill, *opponent);
+    attack(opponent);
+  }else{
+    cout << "Invalid Input: Too Bad Too Sad!" << endl;
+    cout << "Next time check what number you input! :)" << endl;
+    int bone_breaker = (*opponent).getHealth() - 100000;
+    (*opponent).updateHealth(bone_breaker);
     attack(opponent);
   }
 }
