@@ -2,6 +2,9 @@
 #include <fstream>
 using namespace std;
 
+//Ofstream creates a .csv, Ifstream accesses it.
+
+
 /**
  * @brief: writes sample_size # of integers
  *
