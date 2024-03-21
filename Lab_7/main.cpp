@@ -65,7 +65,18 @@ void writeToFile(string filename, char * arr, int sample_size){
  * @param: filename
 **/
 void readFile(string filename){
-  
+  ifstream file(filename);
+    string line;
+
+    if(file.is_open()){
+        while(getline(file, line)){
+            cout << line << endl;
+        }
+        file.close();
+        cout << "Read from " << filename << endl;
+    } else {
+        cout << "Unable to open file: " << filename << endl;
+    }
 }
 
 int main(){
@@ -77,11 +88,11 @@ int main(){
   string int_file = "array_int.csv";
   writeToFile(int_file, array_int, sample_size);
   
-  string str_sile = "array_str.csv";
-  writeToFile(int_file, array_str, sample_size);
+  string str_file = "array_str.csv";
+  writeToFile(str_file, array_str, sample_size);
   
   string char_file = "array_char.csv";
-  writeToFile(int_file, array_char, sample_size);
+  writeToFile(char_file, array_char, sample_size);
 
   readFile("array_int.csv");
   readFile("array_str.csv");
