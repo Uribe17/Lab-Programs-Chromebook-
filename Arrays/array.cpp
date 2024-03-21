@@ -1,6 +1,10 @@
 #include <iostream>
 using namespace std;
 
+// Arrays are pass-by-reference
+// Changes to the array by a function are
+// if you output an array without the array, it yields just the address.
+
 int main(){
   int scores[20]; //Problem: Accessing values, where elements are not defined.
   // Allocates 150 integers in memory
@@ -20,6 +24,14 @@ int main(){
     cout << data[i] << " ";
   }
 
+  //Individual array initializition
+  string info[4] = {"Get", "a", "Job", "loser"};
+  cout << "Info: " << info[2];
+  for (int i = 0; i < 4; i++){
+    cout << info[i] << " ";
+    cout << endl;
+  }
+  
 
 
   
