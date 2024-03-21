@@ -31,9 +31,15 @@ int main(){
     cout << info[i] << " ";
     cout << endl;
   }
+
   
-
-
+  char str1[7] = "CS 103";
+  cout << "Characters: ";
+  for (int i = 0; i < 7; i++){
+    cout << str1[i] << " ";
+  }
+  // This will only work for char/string arrays.
+  cout << str1 << endl;
   
   int score1, score2, score3;
   cin >> score1 >> score2 >> score3;
