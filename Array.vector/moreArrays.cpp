@@ -22,5 +22,8 @@ int main(){
   // Note: The name of the array is the pointer to the first element.
 
   // This is a pass-by-reference
-  void foo(arr2);
+  void foo(int arr2, int SIZE);
+
+  //To pass an array to a function, you pass the array and the size
+  // If a function adds/removes elements to an array, you need to pass the max and current size.
 }
