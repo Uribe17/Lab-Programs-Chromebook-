@@ -9,20 +9,22 @@ using namespace std;
  * @param size - Size of the array (# of elements)
 **/
 void printMemArr(const int * arr, int size){
-  printf("Array - Each int is worth %lu bytes.\n", sizeof(arr[0]);
+  printf("Array - Each int is worth %lu bytes.\n", sizeof(arr[0]));
   for(int i = 0; i < size; i++){
     printf("Value :%i at Memory Location: %p\n", arr[i], arr +i);
   }
 }
 
 /**
- * @brief 
+ * @brief Increments all of the elements in the array by 10.
  *
- * @param 
- * @param
+ * @param arr
+ * @param size
 **/
-void incArrBy10(){
-  
+void incArrBy10(int * arr, int size){
+  for(int i = 0; i < size; i++){
+    arr[i] += 10;
+  }
 }
 
 
@@ -37,10 +39,5 @@ int main(){
   incArrBy10(arr, SIZE);
   printf("After--------------\n");
   printMemArr(arr, SIZE);
-
-  vector<int> vec;
-  for(int i = 0; i < SIZE; i++){
-    vec.push_back(100 + i);
-  }
-  
+  return 0;
 }
