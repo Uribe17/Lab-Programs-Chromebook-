@@ -29,7 +29,7 @@ void incVecBy10(vector<int> * V, int size){
 int main(){
   const int SIZE = 5;
   vector<int> vMain(SIZE);
-
+  cout << "Size: " << vMain.size() << endl;
   for(int i = 0; i < SIZE; i++){
     vMain.insert(vMain.begin() + i, 100 + i);
   }
@@ -41,12 +41,13 @@ int main(){
   printMemVec(&vMain, SIZE);
 
   vMain.pop_back();
+  cout << "Size: " << vMain.size() << endl;
   printf("After Pop=====================");
   printMemVec(&vMain, SIZE);
   vMain.push_back(101);
   vMain.push_back(102);
   printf("After Push=====================");
-  printMemVec(&vMain, SIZE);
+  printMemVec(&vMain, vMain.size());
   
   return 0;
 }
