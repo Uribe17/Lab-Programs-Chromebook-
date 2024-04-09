@@ -9,7 +9,7 @@ using namespace std;
 **/
 void printMemVec(vector<int> * V){
   printf("Array - Each int is worth %lu bytes.\n", sizeof(V[0]));
-  for(int i = 0; i < (*V).size(); i++){
+  for(int i = 0; i < (*V).size() -1; i++){
     printf("Value :%i at Memory Location: %p\n", (*V)[i], &V[i]);
   }
 }
@@ -21,7 +21,7 @@ void printMemVec(vector<int> * V){
  * @param size
 **/
 void incVecBy10(vector<int> * V){
-  for(int i = 0; i < (*V).size(); i++){
+  for(int i = 0; i < (*V).size() -1; i++){
     (*V)[i] += 10;
   }
 }
@@ -29,7 +29,7 @@ void incVecBy10(vector<int> * V){
 int main(){
   const int SIZE = 5;
   vector<int> vMain(SIZE);
-  cout << "Size: " << vMain.size() << endl;
+  cout << "Size: " << vMain.size() -1 << endl;
   for(int i = 0; i < SIZE; i++){
     vMain.insert(vMain.begin() + i, 100 + i);
   }
@@ -41,7 +41,7 @@ int main(){
   printMemVec(&vMain);
 
   vMain.erase(vMain.begin() + 4);
-  cout << "Size: " << vMain.size() << endl;
+  cout << "Size: " << vMain.size() -1 << endl;
   printf("After Pop=====================");
   printMemVec(&vMain);
   
