@@ -7,10 +7,10 @@ using namespace std;
  *
  * @param v - Vector of Integers
 **/
-void printMemVec(vector<int> * V, int size){
+void printMemVec(vector<int> * V){
   printf("Array - Each int is worth %lu bytes.\n", sizeof(V[0]));
-  for(int i = 0; i < size; i++){
-    printf("Value :%i at Memory Location: %p\n", (*V)[i], V +i);
+  for(int i = 0; i < (*V).size(); i++){
+    printf("Value :%i at Memory Location: %p\n", (*V)[i], &V[i]);
   }
 }
 
@@ -20,8 +20,8 @@ void printMemVec(vector<int> * V, int size){
  * @param arr
  * @param size
 **/
-void incVecBy10(vector<int> * V, int size){
-  for(int i = 0; i < size; i++){
+void incVecBy10(vector<int> * V){
+  for(int i = 0; i < (*V).size(); i++){
     (*V)[i] += 10;
   }
 }
@@ -35,19 +35,20 @@ int main(){
   }
 
   printf("Before Increment=====================");
-  printMemVec(&vMain, SIZE);
-  incVecBy10(&vMain, SIZE);
+  printMemVec(&vMain);
+  incVecBy10(&vMain);
   printf("After Increment=====================");
-  printMemVec(&vMain, SIZE);
+  printMemVec(&vMain);
 
-  vMain.pop_back();
+  vMain.erase(vMain.begin() + 4);
   cout << "Size: " << vMain.size() << endl;
   printf("After Pop=====================");
-  printMemVec(&vMain, SIZE);
+  printMemVec(&vMain);
+  
   vMain.push_back(101);
   vMain.push_back(102);
   printf("After Push=====================");
-  printMemVec(&vMain, vMain.size());
+  printMemVec(&vMain);
   
   return 0;
 }
