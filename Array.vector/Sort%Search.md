@@ -47,7 +47,16 @@ Searching
  * }
    
 Binary Search
-/**
  * Binary search is an algorithm that utlizes O(log n)
  * 
-**/
+Binary Search Tree (BST)
+- A tree that has no cycles
+- Nodes (Which contain Elements)
+- Two Children-
+- Left half are smaller or equal Parent, Right is greater than parent, Top Node is the root.
+
+                       ( 4 ) 
+                      /     \
+                   ( 3 )     ( 5 )
+                   /   \     /   \
+  
