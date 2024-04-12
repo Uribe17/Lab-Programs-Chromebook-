@@ -10,7 +10,8 @@ class RPG{
         //Constructors
         RPG();
         RPG(string name, int health, int strength, int defense, string type);
-
+        string setName();
+        void getType();
         void setSkills();
         void printAction(string, RPG);
         // Mutator
@@ -19,7 +20,8 @@ class RPG{
         //These use pointers, and are not used.
         void attack(RPG *opponent);
         void useSkill(RPG *opponent);
-       
+
+      
 
         bool isAlive() const;
         // Accessors
@@ -37,11 +39,21 @@ class RPG{
         string skills[SKILL_SIZE];
 };
 
-class monster : public RPG{
+class monster : private RPG{
     public:
         //Constructors
         monster();
         monster(string name, int health, int strength, int defense, string type);
-        void setSkills();
+        void setMonSkills();
+        void monsterSkill(monster *opponent);
+        void monsterAction(string, monster);
+    private:
+        string name;
+        int health;
+        int strength;
+        int defense;
+        string type; //Warrior, Mage, Thief, Archer
+        string skills[SKILL_SIZE];
+
 };
 #endif
