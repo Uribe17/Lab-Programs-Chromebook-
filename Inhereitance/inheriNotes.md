@@ -7,3 +7,11 @@
 - The existing, more general class is called base class.
   
 - In the derived class definition, you specify only new member functions and data function.
+
+**PolyMorphism**
+
+- Polymorphism extends, expands, and deviates from
+
+**Virtual**
+
+- 
