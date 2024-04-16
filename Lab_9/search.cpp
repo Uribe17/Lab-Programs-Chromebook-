@@ -7,8 +7,8 @@ using namespace std;
 /**
  * @brief: Returns the first index of an elem if it exists, otherwise returns -1. iterativeSearch starts at the first index and iterates sequentially to the next until it either finds the element or until it reaches to the end.
  *
- * @param: Vector of elements
- * @param: integer to look for
+ * @param v: Vector of elements
+ * @param elem: integer to look for
  * @return: int
 **/
 int iterativeSearch(vector<int> v, int elem){
@@ -21,11 +21,17 @@ int iterativeSearch(vector<int> v, int elem){
 }
 
 /**
- * 
+ * @brief:
  *
- *
+ * @param v: Vector of elements
+ * @param start: leftmost index (0)
+ * @param end: rightmost index (v.size())
+ * @param elem: integer to look for
+ * @return: int
 **/
-
+int binarySearch(vector<int> & v, int start, int end, int elem){
+  
+}
 
 /**
  * 
