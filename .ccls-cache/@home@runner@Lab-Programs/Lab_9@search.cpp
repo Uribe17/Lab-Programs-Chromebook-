@@ -72,11 +72,11 @@ void vecGen(string filename, vector<int> & v){
 int main(){
 
   vector<int> v;
-  vecGen( "10000_numbers.csv", v);
-
+  vecGen("Lab_9/10000_numbers.csv", v);
+  
   vector<int> elem_to_find;
-  vecGen("test_elem.csv", elem_to_find);
-
+  vecGen("Lab_9/test_elem.csv", elem_to_find);
+  
   for(int i = 0; i < elem_to_find.size(); i++){
     int elem = elem_to_find[i];
 
@@ -85,14 +85,18 @@ int main(){
     int index_if_found = iterativeSearch(v, elem);
     clock_t end = clock();
 
-    double elapsed_time_in_sec = (double(end - start) / CLOCKS_PER_SEC);
+    double elapsed_time_in_sec = (double(end-start)/CLOCKS_PER_SEC);
 
     cout << index_if_found << ": " << elapsed_time_in_sec << endl;
+  }
 
-    
-//Time testing the Binary Search
+  
+  for(int i = 0; i < elem_to_find.size(); i++){
+    int elem = elem_to_find[i];
+  
+    //Time testing the Binary Search
     clock_t begin = clock();
-    int binary_index_ifFound = binarySearch(v, 0, v.size(), elem);
+    int binary_index_ifFound = binarySearch(v, 0,   v.size(), elem);
     clock_t finish = clock();
 
     double elapsed_time_in_sec_binary = (double(finish - begin) / CLOCKS_PER_SEC);
