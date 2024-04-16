@@ -89,15 +89,14 @@ int main(){
 
     cout << index_if_found << ": " << elapsed_time_in_sec << endl;
 
-//Time testing the Binary Search
     
+//Time testing the Binary Search
     clock_t begin = clock();
     int binary_index_ifFound = binarySearch(v, 0, v.size(), elem);
     clock_t finish = clock();
 
     double elapsed_time_in_sec_binary = (double(finish - begin) / CLOCKS_PER_SEC);
 
-    cout << binary_index_ifFound << ": " << elapsed_time_in_sec_binary << endl;
-    
+    cout << binary_index_ifFound << ": " << elapsed_time_in_sec_binary << endl;   
   }
 }
