@@ -36,19 +36,17 @@ int binarySearch(vector<int> & v, int start, int end, int elem){
   if(start > end){
     return -1;
   }
-  if(start == end){
-    return -1;
-  }
 
   int mid = (start + end) / 2;
 
-  if(v[mid] == elem){
+  if(v[mid] > elem){
+    end = mid - 1;
+  } else if(v[mid] < elem){
+    start = mid + 1;
+  } else{
     return mid;
-  } else if (v[mid] < elem){
-    return binarySearch(v, mid + 1, end, elem);
-  } else {
-    return binarySearch(v, start, mid - 1, elem);
   }
+  return binarySearch(v, start, end, elem);
 }
 
 /**
@@ -70,7 +68,11 @@ void vecGen(string filename, vector<int> & v){
 }
 
 int main(){
-
+  //Vectors for time calculations
+  int SIZE = 5;
+  vector<int> binSeconds(SIZE);
+  vector<int> iterSeconds(SIZE);
+  
   vector<int> v;
   vecGen("Lab_9/10000_numbers.csv", v);
   
@@ -86,7 +88,7 @@ int main(){
     clock_t end = clock();
 
     double elapsed_time_in_sec = (double(end-start)/CLOCKS_PER_SEC);
-
+    iterSeconds.push_back(elapsed_time_in_sec);
     cout << index_if_found << ": " << elapsed_time_in_sec << endl;
   }
 
@@ -100,7 +102,21 @@ int main(){
     clock_t finish = clock();
 
     double elapsed_time_in_sec_binary = (double(finish - begin) / CLOCKS_PER_SEC);
-
+    binSeconds.push_back(elapsed_time_in_sec_binary);
     cout << binary_index_ifFound << ": " << elapsed_time_in_sec_binary << endl;   
   }
+  
+// Calculating Average
+  int binAverage = (binSeconds[0] + binSeconds[1] + binSeconds[2] + binSeconds[3] + binSeconds[4])/5;
+  
+  int iterAverage = (iterSeconds[0] + iterSeconds[1] + iterSeconds[2] + iterSeconds[3] + iterSeconds[4])/5;
+
+  cout << "Iterative search time average: " << iterAverage << endl;
+  cout << "Binary search time average: " << binAverage << endl;
+
+// Calculatinf Speedup (Iterative/Binary)
+  double speedup = (double(iterAverage)/binAverage);
+  cout << "Speedup: " << speedup << endl;
+
+  
 }
