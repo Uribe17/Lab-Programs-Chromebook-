@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdio.h>
 #include <fstream>
 #include <vector>
 #include <ctime>
@@ -69,9 +70,9 @@ void vecGen(string filename, vector<int> & v){
 
 int main(){
   //Vectors for time calculations
-  int SIZE = 5;
-  vector<int> binSeconds(SIZE);
-  vector<int> iterSeconds(SIZE);
+  int SIZE = 10;
+  vector<double> binSeconds(SIZE);
+  vector<double> iterSeconds(SIZE);
   
   vector<int> v;
   vecGen("Lab_9/10000_numbers.csv", v);
@@ -87,9 +88,9 @@ int main(){
     int index_if_found = iterativeSearch(v, elem);
     clock_t end = clock();
 
-    double elapsed_time_in_sec = (double(end-start)/CLOCKS_PER_SEC);
+    double elapsed_time_in_sec = double(end-start)/CLOCKS_PER_SEC;
     iterSeconds.push_back(elapsed_time_in_sec);
-    cout << index_if_found << ": " << elapsed_time_in_sec << endl;
+    printf("%i : %f\n", index_if_found, elapsed_time_in_sec); 
   }
 
   
@@ -101,22 +102,27 @@ int main(){
     int binary_index_ifFound = binarySearch(v, 0,   v.size(), elem);
     clock_t finish = clock();
 
-    double elapsed_time_in_sec_binary = (double(finish - begin) / CLOCKS_PER_SEC);
+    double elapsed_time_in_sec_binary = double(finish - begin) / CLOCKS_PER_SEC;
     binSeconds.push_back(elapsed_time_in_sec_binary);
-    cout << binary_index_ifFound << ": " << elapsed_time_in_sec_binary << endl;   
+    printf("%i : %f\n", binary_index_ifFound, elapsed_time_in_sec_binary);  
   }
   
-// Calculating Average
-  int binAverage = (binSeconds[0] + binSeconds[1] + binSeconds[2] + binSeconds[3] + binSeconds[4])/5;
+  double binSum = 0;
+  for(int i=0; i < SIZE; i++){
+    binSum += binSeconds[i];
+  }
+  double binAverage = binSum/SIZE;
+
+  double iterSum = 0;
+  for(int i=0; i < SIZE; i++){
+    iterSum += binSeconds[i];
+  }
+  double iterAverage = iterSum/SIZE;
+  printf("Iterative search time average: %.10f\n", iterAverage);
+
+  printf("Binary search time average: %.10f\n", binAverage);
   
-  int iterAverage = (iterSeconds[0] + iterSeconds[1] + iterSeconds[2] + iterSeconds[3] + iterSeconds[4])/5;
-
-  cout << "Iterative search time average: " << iterAverage << endl;
-  cout << "Binary search time average: " << binAverage << endl;
-
 // Calculatinf Speedup (Iterative/Binary)
   double speedup = (double(iterAverage)/binAverage);
-  cout << "Speedup: " << speedup << endl;
-
-  
+  printf("The search speedup, iterative / binary: %.15f\n", speedup);
 }
