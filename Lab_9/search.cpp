@@ -70,16 +70,16 @@ void vecGen(string filename, vector<int> & v){
 
 int main(){
   //Vectors for time calculations
-  int SIZE = 10;
-  vector<double> binSeconds(SIZE);
-  vector<double> iterSeconds(SIZE);
+  
+  vector<double> binSeconds;
+  vector<double> iterSeconds;
   
   vector<int> v;
   vecGen("Lab_9/10000_numbers.csv", v);
   
   vector<int> elem_to_find;
   vecGen("Lab_9/test_elem.csv", elem_to_find);
-  
+  cout<< "-Iterative Search-" << endl;
   for(int i = 0; i < elem_to_find.size(); i++){
     int elem = elem_to_find[i];
 
@@ -92,8 +92,9 @@ int main(){
     iterSeconds.push_back(elapsed_time_in_sec);
     printf("%i : %f\n", index_if_found, elapsed_time_in_sec); 
   }
-
-  
+  cout<< "" << endl;
+//----------------------------
+  cout<< "-Binary Search-" << endl;
   for(int i = 0; i < elem_to_find.size(); i++){
     int elem = elem_to_find[i];
   
@@ -106,23 +107,26 @@ int main(){
     binSeconds.push_back(elapsed_time_in_sec_binary);
     printf("%i : %f\n", binary_index_ifFound, elapsed_time_in_sec_binary);  
   }
-  
+  printf(" \n");
+  // Calculate the sum of all values in the vector
   double binSum = 0;
-  for(int i=0; i < SIZE; i++){
+  for(int i=0; i < binSeconds.size(); i++){
     binSum += binSeconds[i];
   }
-  double binAverage = binSum/SIZE;
+  double binAverage = binSum/binSeconds.size();
 
   double iterSum = 0;
-  for(int i=0; i < SIZE; i++){
-    iterSum += binSeconds[i];
+  for(int i=0; i < iterSeconds.size(); i++){
+    iterSum += iterSeconds[i];
   }
-  double iterAverage = iterSum/SIZE;
-  printf("Iterative search time average: %.10f\n", iterAverage);
+  double iterAverage = iterSum/iterSeconds.size();
+  
+  // Print average results.
+  printf("Iterative search time average: %.7f\n", iterAverage);
 
-  printf("Binary search time average: %.10f\n", binAverage);
+  printf("Binary search time average: %.7f\n", binAverage);
   
 // Calculatinf Speedup (Iterative/Binary)
   double speedup = (double(iterAverage)/binAverage);
-  printf("The search speedup, iterative / binary: %.15f\n", speedup);
+  printf("Search speedup, iterative / binary: %.4f\n", speedup);
 }
