@@ -40,9 +40,12 @@ void monster::setMonSkills(){
     } else if (type == "Beast"){
         skills[0] = "Maul";
         skills[1] = "Strike";
-    } else { //Elemental
-        skills[0] = "Fireball";
-        skills[1] = "Lightning Strike";
+    } else if (type == "Spitfire"){ 
+        skills[0] = "Poison Goop";
+        skills[1] = "Bite";
+    } else { //elemental
+      skills[0] = "Fireball";
+      skills[1] = "Lightning Strike";
     }
 }
 
@@ -144,16 +147,13 @@ RPG::RPG(string name, int health, int strength, int defense, string type){
     this->type = type;
     setSkills();
 }
-monster::monster(){
-  name = "Skeleton";
-  health = 50;
-  strength = 10;
-  defense = 5;
-  type = "Undead";
-  skills[0] = "Poison";
-  skills[1] = "Chomp";
+monster::monster() :RPG("Skeleton", 50, 10, 5, "Undead"){
+  setMonSkills();
 }
 
+monster::monster(string name, int health, int strength, int defense, string type){
+  setMonSkills();
+}
 string RPG::getName() const{
   return name;
 }
@@ -165,12 +165,6 @@ int RPG::getStrength() const{
 }
 int RPG::getDefense() const{
   return defense;
-}
-
-void addName(){
-  string new_name;
-  cin >> new_name;
-  
 }
 
 void monster::monsterAction(string skill, monster opponent){

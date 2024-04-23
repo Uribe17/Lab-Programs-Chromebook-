@@ -4,6 +4,7 @@
 #include "RPG2.h"
 using namespace std;
 
+
 /**
  * @brief: Prints both player's names and their health.
  *Example: Wiz Health: 100  NPC Health: 100\n
@@ -48,19 +49,23 @@ void gameLoop(RPG * p1, RPG * p2){
     printf("===================================\n");
   }
 }
-/**
- *
-**/
-
-
-
-
 
 int main(){
-  RPG Tutorial = RPG();
+  // List of NPC/PC
+  monster skeleton = monster();
   RPG player = RPG("", 100, 20, 5, "");
-  player.getName();
+  
+  player.setName();
   player.getType();
-  gameLoop(&player, &Tutorial);
-  displayEnd(player, Tutorial);
+  cout << "You enter a dungeon, and encounter a fork in a corridor." << endl;
+  cout << "Do you go left or right?" << endl;
+  string choice1;
+  cin >> choice1;
+  if (choice1 == "left"){
+    cout << "A skeleton stands in your way, prepare to fight!" << endl;
+    monster skeletonEncounter = monster("Skeleton", 50, 10, 5, "Undead");
+    gameLoop(&player, &skeleton);
+    displayEnd(player, skeleton);
+  }
+
 }
