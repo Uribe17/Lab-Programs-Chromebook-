@@ -73,15 +73,21 @@ void vecGen(string filename, vector<int> & v){
  *
 **/
 void writeTimes( string filename, const vector<int>){
+
+
+  // create a for loop to iterate through file sizes
+  for (int i = 0; i < file_size.size(); i++){
+    filename = to_string(file_size[i]) + "_numbers.csv";
+  }
   
 }
 
 /**
+ * @brief: Computes the avergae of the elements in vector
  *
- *
- *
+ * @param a: vector
 **/
-void average(){
+double average(const vector<double> a){
   
 }
 
@@ -91,11 +97,19 @@ int main(){
   vector<double> binSeconds;
   vector<double> iterSeconds;
 
-  vector<int> v;
-  vecGen("Lab_9/10000_numbers.csv", v);
-
   vector<int> elem_to_find;
   vecGen("Lab_9/test_elem.csv", elem_to_find);
+
+  vector<int> file_sizes;
+  vecGen("Lab_10/sizes.csv", file_sizes);
+
+  vector<double> time;
+  vector<double> avg;
+
+  // create a for loop to iterate through file sizes
+  for (int i = 0; i < file_sizes.size(); i++){
+    filename = to_string(file_sizes[i]) + "_numbers.csv";
+    
   cout<< "-Iterative Search-" << endl;
   for(int i = 0; i < elem_to_find.size(); i++){
     int elem = elem_to_find[i];
