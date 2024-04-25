@@ -13,14 +13,20 @@ class RPG{
         string setName();
         void getType();
         void setSkills();
-        void printAction(string, RPG);
+        template<typename NPC>
+        void printAction(string, NPC);
         // Mutator
-        void updateHealth(int);
+        //template<typename NPC>
+        
+
         void addName();
 
         //These use pointers, and are not used.
-        void attack(RPG *opponent);
-        void useSkill(RPG *opponent);
+        template<typename NPC>
+        void attack(NPC *opponent);
+
+        template<typename NPC>
+        void useSkill(NPC *opponent);
   
       
 
@@ -32,23 +38,31 @@ class RPG{
         int getDefense() const;
 
     private:
+        void updateHealth(int);
         string name;
         int health;
         int strength;
         int defense;
         string type; //Warrior, Mage, Thief, Archer
         string skills[SKILL_SIZE];
+        //void updateHealth(int);
 };
 
 class monster : private RPG{
     public:
         //Constructors
         monster();
-        monster(string name, int health, int strength, int defense, string type):
-RPG(name, health, strength, defense, type) {}
+        monster(string name, int health, int strength, int defense, string type);
         void setMonSkills();
         void monsterSkill(monster *opponent);
         void monsterAction(string, monster);
+
+        string getName() const;
+        int getHealth() const;
+        int getStrength() const;
+        int getDefense() const;
+
+        
 
     private:
         string name;

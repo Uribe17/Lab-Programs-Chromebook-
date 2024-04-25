@@ -48,8 +48,8 @@ void monster::setMonSkills(){
       skills[1] = "Lightning Strike";
     }
 }
-
-void RPG::printAction(string skill, RPG opponent){
+template<typename NPC>
+void RPG::printAction(string skill, NPC opponent){
     printf("%s used %s on %s\n", name.c_str(), skill.c_str(), opponent.getName().c_str());
 }
 /*
@@ -57,6 +57,7 @@ void RPG::printAction(string skill, RPG opponent){
  *
  *@param new_health
 */
+// template<typename NPC>
 void RPG::updateHealth(int new_health){
     health = new_health;
 }
@@ -97,11 +98,12 @@ bool RPG::isAlive() const{
   *
   * @param RPG opponent
 **/
-void RPG::attack(RPG * opponent){
+template<typename NPC>
+void RPG::attack(NPC * opponent){
   int opp_health = (*opponent).getHealth();
   int opp_def = (*opponent).getDefense();
   int new_health = opp_health - (strength - opp_def);
-  (*opponent).updateHealth(new_health);
+  opponent->updateHealth(new_health);
 }
 
 /**
@@ -109,7 +111,8 @@ void RPG::attack(RPG * opponent){
  *
  * @param RPG
 **/
-void RPG::useSkill(RPG * opponent){
+template<typename NPC>
+void RPG::useSkill(NPC * opponent){
   for(int i = 0; i < SKILL_SIZE; i++){
     printf("Skill %i: %s\n", i, skills[i].c_str()); 
   }
@@ -152,6 +155,11 @@ monster::monster() :RPG("Skeleton", 50, 10, 5, "Undead"){
 }
 
 monster::monster(string name, int health, int strength, int defense, string type){
+  this->name = name;
+  this->health = abs(health);
+  this->strength = abs(strength);
+  this->defense = abs(defense);
+  this->type = type;
   setMonSkills();
 }
 string RPG::getName() const{

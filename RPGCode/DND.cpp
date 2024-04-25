@@ -12,7 +12,8 @@ using namespace std;
  * @param: p1
  * @param: p2
 **/
-void displayStats(RPG p1, RPG p2){
+template<typename NPC>
+void displayStats(NPC p1, NPC p2){
   printf("%s Health: %i  %s Health: %i\n", p1.getName().c_str(), p1.getHealth(), p2.getName().c_str(), p2.getHealth());
 }
 
