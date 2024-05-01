@@ -3,6 +3,7 @@
 #include <fstream>
 #include <vector>
 #include <ctime>
+#include <exception>
 using namespace std;
 
 /**
@@ -58,11 +59,15 @@ int binarySearch(vector<int> & v, int start, int end, int elem){
  * @param filename: string
  * @param v: vector
 **/
-void vecGen(string filename, vector<int> & v){
-  ifstream file(filename);
+void vecGen(const string filename, vector<int> & v){
+  ifstream file;
+  file.open(filename);
+    if(!file.is_open()){
+    throw runtime_error("not work :(");
+  }
   int num;
   v.clear();
-  while (file.is_open() && file >> num){
+  while (!file.eof() && file >> num){
     v.push_back(num);
   }
   file.close();
@@ -74,13 +79,19 @@ void vecGen(string filename, vector<int> & v){
  * @param times (vector<double>) : average times
  * @param n (vector<int>) : sizes of vectors
 **/
-void writeTimes(string filename, const vector<double> times, const vector<int> n){
+void writeTimes(string filename, const vector<double> & times, const vector<int> & n){
   ofstream myFile(filename);
-
+  if(!myFile.is_open()){
+    cout << "Bad :(";
+    return;
+  }
   myFile << "Number of Elements (n)\t Time (sec)" << endl;
   // create a for loop to iterate through file sizes
+  cout << times.size() << endl;
   for (int i = 0; i < times.size(); i++){
-    myFile << n[i] << "\t" << times[i] << "\n";
+    cout << times.size() << endl;
+    cout << n.size() << endl;
+    myFile << n[i] << endl;
   }
   myFile.close();
   cout << "Wrote to " << filename << endl;
@@ -114,13 +125,17 @@ int main(){
   vector<double> avg;
 
   // create a for loop to iterate through file sizes
-  cout<< "-Iterative Search-" << endl;
+  cout << "-Iterative Search-" << endl;
   for (int i = 0; i < file_sizes.size(); i++){
     string filename = to_string(file_sizes[i]) + "_numbers.csv";
+    cout << "0" << endl;
     vecGen(filename, v);
+    cout << "1" << endl;
+    printf("%i \n", v.size());
     cout << filename << endl;
     times.clear();
     for(int i = 0; i < elem_to_find.size(); i++){
+      //cout << "2" << endl;
       int elem = elem_to_find[i];
 
 //Time testing the Iterative Search
@@ -134,10 +149,10 @@ int main(){
   double iterAvg = average(times);
   avg.push_back(iterAvg);
 }
+  cout << "3" << endl;
   writeTimes("iterativeSearch_times.csv", avg, v);
-  cout<< " " << endl;
-
   avg.clear();
+
 //-------------------------------------
   cout<< "-Binary Search-" << endl;
   for (int i = 0; i < file_sizes.size(); i++){
@@ -148,14 +163,14 @@ int main(){
     for(int i = 0; i < elem_to_find.size(); i++){
       int elem = elem_to_find[i];
 
-//Time testing the Iterative Search
+//Time testing the Binary Search
       clock_t start = clock();
       int binary_index_ifFound = binarySearch(v, 0, v.size(),elem);
       clock_t end = clock();
 
       double elapsed_time_in_sec = double(end-start)/CLOCKS_PER_SEC;
       times.push_back(elapsed_time_in_sec);
-      printf("%i : %f\n", binary_index_ifFound, elapsed_time_in_sec); 
+      
     }
   double binAvg = average(times);
   avg.push_back(binAvg);
