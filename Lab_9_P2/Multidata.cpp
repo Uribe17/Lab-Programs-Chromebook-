@@ -34,7 +34,7 @@ T iterativeSearch(vector<T> v, T elem){
  * @return: int
 **/
 template <typename T>
-int binarySearch(vector<T> & v, int start, int end, T elem){
+int binarySearch(const vector<T> & v, int start, int end, T elem){
 
   if(start > end){
     return -1;
@@ -63,7 +63,7 @@ int binarySearch(vector<T> & v, int start, int end, T elem){
 template <typename T>
 void vecGen(string filename, vector<T> & v){
   ifstream file(filename);
-  int num;
+  T num;
   v.clear();
   while (file.is_open() && file >> num){
     v.push_back(num);
@@ -80,18 +80,16 @@ int main(){
   vector<int> elem_to_find;
   vecGen("Lab_9_P2/test_elem.csv", elem_to_find);
 
-  cout<< "-Iterative Search-" << endl;
   for(int i = 0; i < elem_to_find.size(); i++){
     int iterElem = elem_to_find[i];
 
 //Time testing the Iterative Search
     clock_t start = clock();
-    int index_if_found = binarySearch(v, 0, v.size(),iterElem);
+    int index_if_found = binarySearch(v, 0, v.size() - 1,iterElem);
     clock_t end = clock();
-
+    
     double elapsed_time_in_sec = double(end-start)/CLOCKS_PER_SEC;
-    printf("%i : %f\n", index_if_found, elapsed_time_in_sec); 
-    //cout << index_if_found << ": " << elapsed_time_in_sec << endl;
+    cout << index_if_found << ": " << elapsed_time_in_sec << endl;
   }
   cout<< " " << endl;
 //----------------------------
@@ -100,12 +98,11 @@ int main(){
   vector<double> double_to_find;
   vecGen("Lab_9_P2/double_to_find.csv", double_to_find);
 
-  cout<< "-Binary Search-" << endl;
   for(int i = 0; i < elem_to_find.size(); i++){
     double elem = double_to_find[i];
   
     clock_t begin = clock();
-    int binary_index_ifFound = binarySearch(d, 0, d.size(), elem);
+    int binary_index_ifFound = binarySearch(d, 0, d.size() - 1, elem);
     clock_t finish = clock();
 
     double elapsed_time_in_sec_binary = double(finish - begin) / CLOCKS_PER_SEC;

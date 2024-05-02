@@ -59,16 +59,18 @@ int binarySearch(vector<int> & v, int start, int end, int elem){
  * @param filename: string
  * @param v: vector
 **/
-void vecGen(const string filename, vector<int> & v){
-  ifstream file;
-  file.open(filename);
-    if(!file.is_open()){
-    throw runtime_error("not work :(");
+void vecGen(const string & filename, vector<int> & v){
+  ifstream file(filename);
+  if(!file.is_open()){
+    throw runtime_error("Failed to open " + filename);
   }
-  int num;
   v.clear();
-  while (!file.eof() && file >> num){
-    v.push_back(num);
+  int number;
+  while(file >> number){
+    v.push_back(number);
+  }
+  if(file.bad()){
+    throw runtime_error("Error reading from file: " + filename);
   }
   file.close();
 }
@@ -128,9 +130,9 @@ int main(){
   cout << "-Iterative Search-" << endl;
   for (int i = 0; i < file_sizes.size(); i++){
     string filename = to_string(file_sizes[i]) + "_numbers.csv";
-    cout << "0" << endl;
+    //cout << "0" << endl;
     vecGen(filename, v);
-    cout << "1" << endl;
+    //cout << "1" << endl;
     printf("%i \n", v.size());
     cout << filename << endl;
     times.clear();
