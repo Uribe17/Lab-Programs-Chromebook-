@@ -89,11 +89,8 @@ void writeTimes(string filename, const vector<double> & times, const vector<int>
   }
   myFile << "Number of Elements (n)\t Time (sec)" << endl;
   // create a for loop to iterate through file sizes
-  cout << times.size() << endl;
   for (int i = 0; i < times.size(); i++){
-    cout << times.size() << endl;
-    cout << n.size() << endl;
-    myFile << n[i] << endl;
+    myFile << n[i] << "\t" << times[i] << endl;
   }
   myFile.close();
   cout << "Wrote to " << filename << endl;
@@ -122,18 +119,17 @@ int main(){
   vector<int> file_sizes;
   vecGen("Lab_9_P2/sizes.csv", file_sizes);
 
-  vector<int>v;
+  vector<int> v;
   vector<double> times;
   vector<double> avg;
 
   // create a for loop to iterate through file sizes
   cout << "-Iterative Search-" << endl;
   for (int i = 0; i < file_sizes.size(); i++){
-    string filename = to_string(file_sizes[i]) + "_numbers.csv";
+    string filename = "Lab_9_P2/" + to_string(file_sizes[i]) + "_numbers.csv";
     //cout << "0" << endl;
     vecGen(filename, v);
     //cout << "1" << endl;
-    printf("%i \n", v.size());
     cout << filename << endl;
     times.clear();
     for(int i = 0; i < elem_to_find.size(); i++){
@@ -151,14 +147,14 @@ int main(){
   double iterAvg = average(times);
   avg.push_back(iterAvg);
 }
-  cout << "3" << endl;
+  //cout << "3" << endl;
   writeTimes("iterativeSearch_times.csv", avg, v);
   avg.clear();
 
 //-------------------------------------
   cout<< "-Binary Search-" << endl;
   for (int i = 0; i < file_sizes.size(); i++){
-    string filename = to_string(file_sizes[i]) + "_numbers.csv";
+    string filename = "Lab_9_P2/" + to_string(file_sizes[i]) + "_numbers.csv";
     vecGen(filename, v);
     cout << filename << endl;
     times.clear();
